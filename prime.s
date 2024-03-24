@@ -33,8 +33,8 @@ not_prime  ; Label for non-prime number processing
 
 next_divisor  ; Label for moving to next divisor
    ADD r1, #1            ; Increment divisor (j)
-   CMP r1, r3           ; Check if new divisor is greater than dividend
-   BGT loop_end          ; Branch to loop end if divisor is greater than dividend
+   CMP r1, r3           ; Check if new divisor equals dividend
+   BEQ loop_end          ; Branch to loop end if divisor is greater than dividend
 
 loop_end:  ; Loop end
    BX LR                ; Return to calling function
