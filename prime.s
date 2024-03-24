@@ -1,6 +1,6 @@
-AREA lab, CODE
-ENTRY
-EXPORT prime
+		AREA lab, CODE
+		ENTRY
+		EXPORT prime
 
 num1 DCD 2, 3, 7, 8, 12, 14, 37, 66  ; Array of numbers to check
 
@@ -36,11 +36,19 @@ next_divisor  ; Label for moving to next divisor
    CMP r1, r3           ; Check if new divisor equals dividend
    BEQ loop_end          ; Branch to loop end if divisor is greater than dividend
 
-loop_end:  ; Loop end
+loop_end ; Loop end
    BX LR                ; Return to calling function
 
-AREA labkk, DATA
+		AREA labkk, DATA
 
 arr1 DCD 0, 0, 0, 0, 0, 0, 0, 0  ; Initialize arr1 with zeros
 
-END
+		AREA my_main, CODE ; Define a new area for main
+		EXPORT main
+
+main
+   BL prime      ; Call your prime checking function
+   B .           ; Loop indefinitely (or add proper exit handling)
+		END
+		
+	END
